@@ -1,0 +1,42 @@
+package org.example.thymeleaf.controller;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.example.thymeleaf.service.UserService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
+import java.util.Objects;
+
+/**
+ * 登录web控制器
+ *
+ * @author ding
+ */
+@Controller
+@Slf4j
+@RequiredArgsConstructor
+public class IndexController {
+
+    private final UserService iUserService;
+
+    @RequestMapping({"/", "/index"})
+    public String index(Model model, HttpSession session) {
+        Object user = session.getAttribute("user");
+        if (Objects.isNull(user)) {
+            log.error("用户未登录");
+            return "login";
+        }
+        return "index";
+    }
+
+    @RequestMapping("/userInfo")
+    public String table1(Model model) {
+        model.addAttribute("users", iUserService.listUser());
+        return "userInfo";
+    }
+
+}
+

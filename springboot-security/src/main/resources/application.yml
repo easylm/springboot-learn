@@ -1,0 +1,6 @@
+server:
+  port: 9999
+security:
+  basic:
+    # 默认开启，无需配置，关闭设为false即可
+    enabled: true
