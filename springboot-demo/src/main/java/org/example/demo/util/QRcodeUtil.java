@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.util.Hashtable;
 
+/**
+ * 二维码工具
+ *
+ * @author fausto
+ */
 public class QRcodeUtil {
 
     private static final String CHARSET = "utf-8";
